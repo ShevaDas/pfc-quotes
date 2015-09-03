@@ -34,6 +34,14 @@ get '/quotes/new/?' do
   haml :new_quote
 end
 
+# get a single quote
+get '/quotes/:id/?' do |id|
+  halt 400, "Please provide a numerical ID." unless id =~ /\d+/
+  @quote = Quote.get!(id)
+  @title = "Quote " + id
+  haml :quote
+end
+
 # save a new quote
 post '/quotes/?' do
   @quote = Quote.new
