@@ -27,3 +27,24 @@ get '/quotes/?' do
   @quotes = Quote.all(:order => :created_at.desc)
   haml :index
 end
+
+# form to add a new quote
+get '/quotes/new/?' do
+  @title = "New Quote"
+  haml :new_quote
+end
+
+# save a new quote
+post '/quotes/?' do
+  @quote = Quote.new
+  @quote.created_at = Time.now
+  @quote.updated_at = Time.now
+  @quote.quote_text = params[:quote]
+  @quote.quote_author = params[:author]
+
+  if @quote.save
+    redirect '/quotes'
+  else
+    "Something went wrong and your quote wasn't saved. Try again?"
+  end
+end
