@@ -16,6 +16,14 @@ end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
+
+# redirect index to all quotes page
 get '/' do
-   "Hello World! Is it me you're looking for?"
+  redirect '/quotes/'
+end
+
+# get all quotes
+get '/quotes/?' do
+  @quotes = Quote.all(:order => :created_at.desc)
+  haml :index
 end
