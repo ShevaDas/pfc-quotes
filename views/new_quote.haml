@@ -1,0 +1,10 @@
+%form(action='/quotes' method='POST' id='new_quote')
+
+  %label Quote
+  %br
+  %textarea(name='quote' title='Enter the new quote.' class='required' placeholder='Enter the new quote.')
+  %br
+  %label Author
+  %br
+  %input(type='text' name='author')
+  %input(type='submit' value='Save' name='save' id='save')
