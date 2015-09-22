@@ -1,6 +1,6 @@
 - @quotes.each do |q|
   %p
-    %span= q.id
+    %a(href='quotes/#{q.id}')= q.id
     %span= q.quote_text
     &mdash;
     %span
